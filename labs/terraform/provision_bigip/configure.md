@@ -48,8 +48,8 @@ When the DO task is completed, you will see a new text window appear in VS Code 
     },
 ```
 
-## Configure Test Application
-Now that our BIG-IP is deployed and onboarded we are ready to configure a test application.
+## Configure Demo Application
+Now that our BIG-IP is deployed and onboarded we are ready to configure a demo application.
 
 To configure our application we need to determine the allocated IP address for our virtual server and associate the AWS Elastic IP:
 ```bash
@@ -70,11 +70,13 @@ Now we can post the AS3 declaration to the BIG-IP:
 2. Select all text in the declaration 
 3. Right-click the text and click *Post as AS3 Declaration*
 
-## Test Application
+## Test Demo Application
 Now that the BIG-IP is configured with your demo application, we will leverage InSpec to validate that the application is working correctly:
 ```bash
+# Get the App's public IP address
 export demo_eip=`aws ec2 describe-addresses | jq '.Addresses[] | select(.AllocationId | contains($allocation_id)) | .PublicIp' --arg allocation_id "$allocation_id" -r`
 
+# Run inspec test
 inspec exec tests/demo-app --input=demo_app=$demo_eip
 ```
 
@@ -91,3 +93,4 @@ Target:  local://
 Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
 Test Summary: 1 successful, 0 failures, 0 skipped
 ```
+[Previous](./setup.md)
