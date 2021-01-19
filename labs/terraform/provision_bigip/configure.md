@@ -1,5 +1,5 @@
 ## Configure the BIG-IP
-In this section, we will use the [F5 VS Code extension](https://f5devcentral.github.io/VS Code-f5/#/) to configure our new BIG-IP.
+In this section, we will use the [F5 VS Code extension](https://f5devcentral.github.io/vscode-f5/#/) to configure our new BIG-IP.
 
 ## Add F5 Host
 To configure the BIG-IP we need to make the F5 VS Code extension aware of our new BIG-IP deployment.  
